@@ -35,4 +35,36 @@ Test 2 (Attack Chain): PASS
 
 OVERALL:  ALL TESTS PASSED
 
+##  How It Works
+
+### Multi-Method Victim Identification
+
+The analyzer uses **6 independent methods** and scores each candidate:
+
+**Method 1: Risk Pattern Analysis (10-25 points)**
+- High-severity risks from internal IPs
+- C2 beacons: +15 points
+- Data exfiltration: +12 points
+- Credential theft: +8 points
+
+**Method 2: Malware Downloads (20 points)**
+- Hosts that downloaded executables (.exe, .dll)
+- Strong indicator of compromise
+
+**Method 3: Credential Theft (10 points)**
+- Hosts that leaked credentials
+- Stores credential metadata
+
+**Method 4: C2 Communication (25 points)**
+- Beaconing behavior detection
+- Strongest single indicator
+
+**Method 5: HTTP Patterns (5 points)**
+- Suspicious URLs (cmd, exec, payload)
+- Executable downloads
+
+**Method 6: DNS Patterns (3-8 points)**
+- High query volumes
+- DGA-like domains
+- Suspicious TLDs
 
